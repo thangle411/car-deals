@@ -1,0 +1,27 @@
+{
+    "name": "Car Deals Extension",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "description": "Extension to scrape car deals.",
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "action": {
+        "default_title": "Open Car Deals Interface"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
