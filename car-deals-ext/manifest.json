@@ -9,7 +9,9 @@
     "permissions": [
         "activeTab",
         "scripting",
-        "tabs"
+        "tabs",
+        "storage",
+        "unlimitedStorage"
     ],
     "action": {
         "default_title": "Open Car Deals Interface"

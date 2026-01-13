@@ -5,11 +5,13 @@
   "license": "ISC",
   "author": "",
   "scripts": {
-    "build": "esbuild src/content.ts src/background.ts --outdir=dist --bundle && copyfiles -u 0 manifest.json dist"
+    "build": "node build.js"
   },
   "devDependencies": {
+    "@types/node": "^25.0.7",
     "@types/webextension-polyfill": "^0.12.4",
     "copyfiles": "^2.4.1",
+    "dotenv": "^17.2.3",
     "esbuild": "^0.27.2",
     "typescript": "^5.9.3"
   },

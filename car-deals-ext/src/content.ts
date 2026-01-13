@@ -1,6 +1,6 @@
 import browser from "webextension-polyfill";
 import { ApiData, SiteData } from "./types";
-import { sleep } from "./lib/sleep";
+import { sleep } from "./lib/shared/sleep";
 
 console.log("Content script loaded");
 type Responses =
