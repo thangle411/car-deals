@@ -1,6 +1,7 @@
 import browser from "webextension-polyfill";
 import { ApiData, SiteData } from "../../types";
 import { waitForTab } from "./waitForTab";
+import { doFetch } from "../shared/fetch";
 
 export const handleScrape = async (sites: SiteData[]) => {
     const didScrape = await didScrapeToday();
@@ -9,7 +10,7 @@ export const handleScrape = async (sites: SiteData[]) => {
     await updateLastScrapeDate();
 }
 
-export const startScrape = async (sites: SiteData[]) => {
+export const startScrape = async (sites: SiteData[], keyword?: string) => {
     for (const site of sites) {
         console.log("site: ", site);
 
@@ -35,17 +36,28 @@ export const startScrape = async (sites: SiteData[]) => {
 
         await browser.tabs.remove(newTab.id);
 
+        const filteredData = response.payload.filter((item) =>
+            item.title.toLowerCase().includes(keyword?.toLowerCase() || "")
+            || item.subTitle.toLowerCase().includes(keyword?.toLowerCase() || "")
+        );
+
+        console.log("keyword", keyword);
+        console.log("filteredData", filteredData);
+
         const body = {
             hostname: new URL(site.url).hostname,
-            data: response.payload
+            data: filteredData
         }
 
-        fetch(`${process.env.BACKEND_URL}/submit`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
+        doFetch({
+            url: `${process.env.BACKEND_URL}/submit`,
+            options: {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(body)
+            }
         })
     }
 };

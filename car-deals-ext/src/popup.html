@@ -5,7 +5,13 @@
 </head>
 
 <body>
-    <div>
+    <div style="width: 200px">
+        <form id="keyword-form">
+            <div style="display: flex; gap: 5px; flex-direction: column; margin-bottom: 10px; font-size: 14px">
+                <label>Keyword (to filter)</label>
+                <input style="padding: 5px;" id="keyword" type="text" placeholder="brand, model, etc...">
+            </div>
+        </form>
         <button id="scrape">Scrape</button>
     </div>
     <script src="popup.js"></script>

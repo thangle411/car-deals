@@ -57,12 +57,15 @@ const scrapeFirstPageResults = async (data: SiteData) => {
         }
         const title = titleEle.textContent.trim();
 
-        const subTitleEle = tile.querySelector(data.subTitle);
-        if (!subTitleEle) {
-            console.log("Content script: No sub title")
-            continue;
+        let subTitleEle;
+        if (data.subTitle) {
+            subTitleEle = tile.querySelector(data.subTitle);
+            if (!subTitleEle) {
+                console.log("Content script: No sub title")
+                continue;
+            }
         }
-        const subTitle = subTitleEle.textContent.trim();
+        const subTitle = subTitleEle?.textContent.trim();
 
         const priceEle = tile.querySelector(data.price);
         if (!priceEle) {
@@ -78,7 +81,7 @@ const scrapeFirstPageResults = async (data: SiteData) => {
         const formattedData: ApiData = {
             url: data.url,
             title,
-            subTitle,
+            subTitle: subTitle || "",
             price,
             parsedPrice
         }

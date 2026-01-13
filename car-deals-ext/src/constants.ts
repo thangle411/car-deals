@@ -18,5 +18,23 @@ export const sites: SiteData[] = [
         subTitle: ".specifications",
         price: '[data-cmp="pricing"]',
         sleepBeforeStartDuration: 8000
-    }
+    },
+    {
+        url: "https://www.carvana.com/cars/filters?cvnaid=eyJmaWx0ZXJzIjp7ImZ1ZWxUeXBlcyI6WyJIeWJyaWQiXSwibWFrZXMiOlt7Im5hbWUiOiJNYXpkYSIsInBhcmVudE1vZGVscyI6W3sibmFtZSI6IkNYLTUwIn1dfV19LCJzb3J0QnkiOiJMb3dlc3RQcmljZSJ9",
+        container: "#results-section",
+        tile: "div[data-qa='result-tile']",
+        title: "p[data-qa='make-model']",
+        subTitle: "[data-qa='trim-mileage']",
+        price: "[data-qa='price']",
+        sleepBeforeStartDuration: 5000
+    },
+    {
+        url: "https://www.carmax.com/cars?search=cx-50+hybrid?year=2025-2025",
+        container: "#cars-listing",
+        tile: `div[id]`,
+        title: "h3",
+        subTitle: "",
+        price: 'div > .price-info',
+        sleepBeforeStartDuration: 5000
+    },
 ];
