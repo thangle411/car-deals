@@ -2,6 +2,13 @@ import browser from "webextension-polyfill";
 import { ApiData, SiteData } from "../../types";
 import { waitForTab } from "./waitForTab";
 
+export const handleScrape = async (sites: SiteData[]) => {
+    const didScrape = await didScrapeToday();
+    if (didScrape) return;
+    await startScrape(sites);
+    await updateLastScrapeDate();
+}
+
 export const startScrape = async (sites: SiteData[]) => {
     for (const site of sites) {
         console.log("site: ", site);

@@ -14,7 +14,7 @@
         "unlimitedStorage"
     ],
     "action": {
-        "default_title": "Open Car Deals Interface"
+        "default_popup": "popup.html"
     },
     "content_scripts": [
         {

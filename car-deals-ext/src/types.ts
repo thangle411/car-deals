@@ -16,3 +16,7 @@ export type ApiData = {
     price: string,
     parsedPrice: number,
 }
+
+export type Message = {
+    type: "START_SCRAPING" | "FORCE_SCRAPING";
+}
